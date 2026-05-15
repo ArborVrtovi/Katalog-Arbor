@@ -19,139 +19,630 @@
     --radius: 18px;
     --shadow: 0 2px 18px rgba(74,103,65,0.10);
   }
-  * { box-sizing:border-box; margin:0; padding:0; }
-  body { font-family:'DM Sans',sans-serif; background:var(--bg); color:var(--text); min-height:100vh; }
 
-  header { background:var(--green-dark); position:sticky; top:0; z-index:100; box-shadow:0 2px 16px rgba(74,103,65,0.22); }
-  .header-inner { max-width:1200px; margin:0 auto; padding:10px 24px; display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-  .logo-img { height:48px; width:auto; object-fit:contain; }
-  .header-right { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-left:auto; }
-  .search-wrap { min-width:150px; max-width:250px; flex:1; }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--green-dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 16px rgba(74,103,65,0.22);
+  }
+
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .logo-img {
+    height: 48px;
+    width: auto;
+    object-fit: contain;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-left: auto;
+  }
+
+  .search-wrap {
+    min-width: 150px;
+    max-width: 250px;
+    flex: 1;
+  }
+
   .search-wrap input {
-    width:100%; padding:8px 16px; border-radius:50px;
-    border:none; background:rgba(255,255,255,0.13); color:#fff;
-    font-family:'DM Sans',sans-serif; font-size:14px; outline:none; transition:background 0.2s;
+    width: 100%;
+    padding: 8px 16px;
+    border-radius: 50px;
+    border: none;
+    background: rgba(255,255,255,0.13);
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: background 0.2s;
   }
-  .search-wrap input::placeholder { color:rgba(255,255,255,0.5); }
-  .search-wrap input:focus { background:rgba(255,255,255,0.22); }
 
-  .social-links { display:flex; gap:7px; }
+  .search-wrap input::placeholder {
+    color: rgba(255,255,255,0.5);
+  }
+
+  .search-wrap input:focus {
+    background: rgba(255,255,255,0.22);
+  }
+
+  .social-links {
+    display: flex;
+    gap: 7px;
+  }
+
   .social-btn {
-    display:flex; align-items:center; gap:5px;
-    padding:7px 13px; border-radius:50px;
-    font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600;
-    text-decoration:none; transition:all 0.18s; white-space:nowrap;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 7px 13px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.18s;
+    white-space: nowrap;
   }
-  .btn-ig { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; }
-  .btn-ig:hover { opacity:0.88; transform:translateY(-1px); }
-  .btn-wa { background:#25D366; color:#fff; }
-  .btn-wa:hover { background:#1ebe5d; transform:translateY(-1px); }
-  .btn-call { background:rgba(255,255,255,0.15); color:#fff; border:1.5px solid rgba(255,255,255,0.3); }
-  .btn-call:hover { background:rgba(255,255,255,0.25); transform:translateY(-1px); }
 
-  .filters { background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:68px; z-index:90; }
-  .filters-inner { max-width:1200px; margin:0 auto; padding:11px 24px; display:flex; gap:9px; align-items:center; flex-wrap:wrap; }
-  .filter-label { font-size:12px; font-weight:500; color:var(--muted); letter-spacing:0.08em; text-transform:uppercase; margin-right:4px; }
+  .btn-ig {
+    background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+    color: #fff;
+  }
+
+  .btn-ig:hover {
+    opacity: 0.88;
+    transform: translateY(-1px);
+  }
+
+  .btn-wa {
+    background: #25D366;
+    color: #fff;
+  }
+
+  .btn-wa:hover {
+    background: #1ebe5d;
+    transform: translateY(-1px);
+  }
+
+  .btn-call {
+    background: rgba(255,255,255,0.15);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.3);
+  }
+
+  .btn-call:hover {
+    background: rgba(255,255,255,0.25);
+    transform: translateY(-1px);
+  }
+
+  .filters {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 68px;
+    z-index: 90;
+  }
+
+  .filters-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 11px 24px;
+    display: flex;
+    gap: 9px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .filter-label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-right: 4px;
+  }
+
   .filter-btn {
-    padding:6px 17px; border-radius:50px; border:1.5px solid var(--border);
-    background:transparent; color:var(--muted);
-    font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500; cursor:pointer; transition:all 0.18s;
+    padding: 6px 17px;
+    border-radius: 50px;
+    border: 1.5px solid var(--border);
+    background: transparent;
+    color: var(--muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s;
   }
-  .filter-btn:hover { border-color:var(--green-mid); color:var(--green-mid); }
-  .filter-btn.active { background:var(--green-dark); border-color:var(--green-dark); color:#fff; }
 
-  .stats-bar { max-width:1200px; margin:24px auto 0; padding:0 24px; }
-  .stats-count { font-size:13px; color:var(--muted); }
-  .stats-count strong { color:var(--green-dark); font-weight:600; }
+  .filter-btn:hover {
+    border-color: var(--green-mid);
+    color: var(--green-mid);
+  }
 
-  .grid { max-width:1200px; margin:18px auto 60px; padding:0 24px; display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:22px; }
+  .filter-btn.active {
+    background: var(--green-dark);
+    border-color: var(--green-dark);
+    color: #fff;
+  }
 
-  .card { background:var(--surface); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow); transition:transform 0.22s,box-shadow 0.22s; cursor:pointer; border:1px solid var(--border); }
-  .card:hover { transform:translateY(-4px); box-shadow:0 10px 36px rgba(74,103,65,0.16); }
-  .card-img-wrap { overflow:hidden; position:relative; }
-  .card-img { width:100%; aspect-ratio:1/1; object-fit:cover; display:block; background:var(--green-pale); transition:transform 0.4s; }
-  .card:hover .card-img { transform:scale(1.04); }
-  .cat-badge { position:absolute; top:12px; left:12px; background:var(--green-dark); color:#fff; font-size:10px; font-weight:600; letter-spacing:0.1em; text-transform:uppercase; padding:4px 10px; border-radius:50px; }
-  .card-body { padding:15px 17px 17px; }
-  .card-id { font-size:10px; color:var(--muted); letter-spacing:0.08em; margin-bottom:3px; }
-  .card-name { font-family:'Playfair Display',serif; font-size:16px; font-weight:600; color:var(--text); line-height:1.3; margin-bottom:4px; }
-  .card-spec { font-size:12px; color:var(--muted); margin-bottom:12px; }
-  .card-footer { display:flex; align-items:center; justify-content:space-between; }
-  .card-price { font-family:'Playfair Display',serif; font-size:21px; font-weight:700; color:var(--green-dark); }
-  .card-price span { font-size:13px; font-weight:400; color:var(--muted); }
-  .btn-inquire { background:var(--green-pale); color:var(--green-dark); border:none; padding:7px 15px; border-radius:50px; font-family:'DM Sans',sans-serif; font-size:12px; font-weight:600; cursor:pointer; transition:background 0.18s; }
-  .btn-inquire:hover { background:var(--green-light); color:#fff; }
+  .stats-bar {
+    max-width: 1200px;
+    margin: 24px auto 0;
+    padding: 0 24px;
+  }
 
-  .empty { grid-column:1/-1; text-align:center; padding:80px 20px; color:var(--muted); }
-  .empty-icon { font-size:48px; margin-bottom:16px; }
-  .empty h3 { font-family:'Playfair Display',serif; font-size:22px; color:var(--text); margin-bottom:8px; }
+  .stats-count {
+    font-size: 13px;
+    color: var(--muted);
+  }
 
-  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(42,50,38,0.65); z-index:200; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(5px); }
-  .modal-overlay.open { display:flex; }
-  .modal { background:var(--surface); border-radius:22px; max-width:540px; width:100%; overflow:hidden; box-shadow:0 24px 80px rgba(42,50,38,0.28); animation:modalIn 0.24s ease; }
-  @keyframes modalIn { from{opacity:0;transform:scale(0.94) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }
-  .modal-img { width:100%; max-height:300px; object-fit:cover; }
-  .modal-body { padding:20px 24px 24px; }
-  .modal-id { font-size:11px; color:var(--muted); letter-spacing:0.1em; margin-bottom:4px; }
-  .modal-name { font-family:'Playfair Display',serif; font-size:23px; font-weight:700; color:var(--text); margin-bottom:3px; }
-  .modal-spec { font-size:14px; color:var(--muted); margin-bottom:14px; }
-  .modal-price { font-family:'Playfair Display',serif; font-size:32px; font-weight:700; color:var(--green-dark); margin-bottom:16px; }
-  .modal-price small { font-size:15px; font-weight:400; color:var(--muted); }
-  .modal-actions { display:flex; flex-direction:column; gap:8px; }
-  .modal-close { position:absolute; top:14px; right:14px; background:rgba(42,50,38,0.45); border:none; color:#fff; width:34px; height:34px; border-radius:50%; font-size:17px; cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background 0.15s; }
-  .modal-close:hover { background:rgba(42,50,38,0.75); }
-  .modal-wrap { position:relative; }
+  .stats-count strong {
+    color: var(--green-dark);
+    font-weight: 600;
+  }
 
-  .btn-action { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; padding:12px; border:none; border-radius:50px; font-family:'DM Sans',sans-serif; font-size:14px; font-weight:600; cursor:pointer; text-align:center; text-decoration:none; transition:all 0.18s; }
-  .btn-a-wa { background:#25D366; color:#fff; }
-  .btn-a-wa:hover { background:#1ebe5d; }
-  .btn-a-call { background:var(--green-dark); color:#fff; }
-  .btn-a-call:hover { background:var(--green-mid); }
-  .btn-a-ig { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; }
-  .btn-a-ig:hover { opacity:0.88; }
+  .grid {
+    max-width: 1200px;
+    margin: 18px auto 60px;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(270px,1fr));
+    gap: 22px;
+  }
 
-  footer { background:var(--green-dark); color:rgba(255,255,255,0.65); padding:32px 24px; text-align:center; font-size:14px; line-height:2; }
-  footer strong { color:#fff; }
-  .footer-logo { height:52px; width:auto; margin-bottom:14px; }
-  .footer-contact { margin:8px 0 14px; font-size:15px; color:rgba(255,255,255,0.85); }
-  .footer-contact a { color:#fff; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:1px; transition:border-color 0.18s; }
-  .footer-contact a:hover { border-color:#fff; }
-  .footer-socials { display:flex; justify-content:center; gap:10px; flex-wrap:wrap; }
-  .fsb { display:flex; align-items:center; gap:6px; padding:8px 18px; border-radius:50px; font-family:'DM Sans',sans-serif; font-size:13px; font-weight:600; text-decoration:none; transition:opacity 0.18s; }
-  .fsb:hover { opacity:0.85; transform:translateY(-1px); }
-  .fsb-wa { background:#25D366; color:#fff; }
-  .fsb-ig { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; }
-  .fsb-call { background:rgba(255,255,255,0.14); color:#fff; border:1.5px solid rgba(255,255,255,0.28); }
+  .card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.22s, box-shadow 0.22s;
+    cursor: pointer;
+    border: 1px solid var(--border);
+  }
 
-  @media(max-width:640px) {
-    .header-inner { gap:8px; }
-    .header-right { width:100%; justify-content:space-between; }
-    .search-wrap { flex:1; min-width:100px; max-width:none; }
-    .social-btn span { display:none; }
-    .grid { grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:13px; }
-    .card-name { font-size:13px; }
-    .card-price { font-size:17px; }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 36px rgba(74,103,65,0.16);
+  }
+
+  .card-img-wrap {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card-img {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    display: block;
+    background: var(--green-pale);
+    transition: transform 0.4s;
+  }
+
+  .card:hover .card-img {
+    transform: scale(1.04);
+  }
+
+  .cat-badge {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--green-dark);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 50px;
+  }
+
+  .card-body {
+    padding: 15px 17px 17px;
+  }
+
+  .card-id {
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    margin-bottom: 3px;
+  }
+
+  .card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .card-spec {
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 12px;
+  }
+
+  .card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .card-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 21px;
+    font-weight: 700;
+    color: var(--green-dark);
+  }
+
+  .card-price span {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .btn-inquire {
+    background: var(--green-pale);
+    color: var(--green-dark);
+    border: none;
+    padding: 7px 15px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.18s;
+  }
+
+  .btn-inquire:hover {
+    background: var(--green-light);
+    color: #fff;
+  }
+
+  .empty {
+    grid-column: 1/-1;
+    text-align: center;
+    padding: 80px 20px;
+    color: var(--muted);
+  }
+
+  .empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+  }
+
+  .empty h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(42,50,38,0.65);
+    z-index: 200;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+  }
+
+  .modal-overlay.open {
+    display: flex;
+  }
+
+  .modal {
+    background: var(--surface);
+    border-radius: 22px;
+    max-width: 540px;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 24px 80px rgba(42,50,38,0.28);
+    animation: modalIn 0.24s ease;
+  }
+
+  @keyframes modalIn {
+    from {
+      opacity: 0;
+      transform: scale(0.94) translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1) translateY(0);
+    }
+  }
+
+  .modal-img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+
+  .modal-body {
+    padding: 20px 24px 24px;
+  }
+
+  .modal-id {
+    font-size: 11px;
+    color: var(--muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 4px;
+  }
+
+  .modal-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 3px;
+  }
+
+  .modal-spec {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 14px;
+  }
+
+  .modal-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--green-dark);
+    margin-bottom: 16px;
+  }
+
+  .modal-price small {
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--muted);
+  }
+
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: rgba(42,50,38,0.45);
+    border: none;
+    color: #fff;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    font-size: 17px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s;
+  }
+
+  .modal-close:hover {
+    background: rgba(42,50,38,0.75);
+  }
+
+  .modal-wrap {
+    position: relative;
+  }
+
+  .btn-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.18s;
+  }
+
+  .btn-a-wa {
+    background: #25D366;
+    color: #fff;
+  }
+
+  .btn-a-wa:hover {
+    background: #1ebe5d;
+  }
+
+  .btn-a-call {
+    background: var(--green-dark);
+    color: #fff;
+  }
+
+  .btn-a-call:hover {
+    background: var(--green-mid);
+  }
+
+  .btn-a-ig {
+    background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+    color: #fff;
+  }
+
+  .btn-a-ig:hover {
+    opacity: 0.88;
+  }
+
+  footer {
+    background: var(--green-dark);
+    color: rgba(255,255,255,0.65);
+    padding: 32px 24px;
+    text-align: center;
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  footer strong {
+    color: #fff;
+  }
+
+  .footer-logo {
+    height: 52px;
+    width: auto;
+    margin-bottom: 14px;
+  }
+
+  .footer-contact {
+    margin: 8px 0 14px;
+    font-size: 15px;
+    color: rgba(255,255,255,0.85);
+  }
+
+  .footer-contact a {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding-bottom: 1px;
+    transition: border-color 0.18s;
+  }
+
+  .footer-contact a:hover {
+    border-color: #fff;
+  }
+
+  .footer-socials {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .fsb {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: opacity 0.18s;
+  }
+
+  .fsb:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+  }
+
+  .fsb-wa {
+    background: #25D366;
+    color: #fff;
+  }
+
+  .fsb-ig {
+    background: linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+    color: #fff;
+  }
+
+  .fsb-call {
+    background: rgba(255,255,255,0.14);
+    color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.28);
+  }
+
+  @media(max-width: 640px) {
+    .header-inner {
+      gap: 8px;
+    }
+
+    .header-right {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .search-wrap {
+      flex: 1;
+      min-width: 100px;
+      max-width: none;
+    }
+
+    .social-btn span {
+      display: none;
+    }
+
+    .grid {
+      grid-template-columns: repeat(auto-fill,minmax(155px,1fr));
+      gap: 13px;
+    }
+
+    .card-name {
+      font-size: 13px;
+    }
+
+    .card-price {
+      font-size: 17px;
+    }
   }
 </style>
 </head>
+
 <body>
 
 <header>
   <div class="header-inner">
-    <img class="logo-img" src="slike/9000-346-trachycarpus.svg+xml" alt="Arbor">
+    <img class="logo-img" src="Slike/arbor-logo.svg" alt="Arbor logo">
+
     <div class="header-right">
       <div class="search-wrap">
         <input type="text" id="searchInput" placeholder="Pretraži biljke...">
       </div>
+
       <div class="social-links">
         <a class="social-btn btn-ig" href="https://www.instagram.com/arbor_vrtovi/" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><span>Instagram</span>
+          Instagram
         </a>
+
         <a class="social-btn btn-wa" href="https://wa.me/385913819412" target="_blank">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg><span>WhatsApp</span>
+          WhatsApp
         </a>
+
         <a class="social-btn btn-call" href="tel:+385913819412">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Pozovi</span>
+          Pozovi
         </a>
       </div>
     </div>
@@ -168,123 +659,198 @@
   </div>
 </div>
 
-<div class="stats-bar"><div class="stats-count" id="statsCount"></div></div>
+<div class="stats-bar">
+  <div class="stats-count" id="statsCount"></div>
+</div>
+
 <div class="grid" id="productGrid"></div>
 
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-wrap">
     <div class="modal">
       <img class="modal-img" id="modalImg" src="" alt="">
+
       <div class="modal-body">
         <div class="modal-id" id="modalId"></div>
         <div class="modal-name" id="modalName"></div>
         <div class="modal-spec" id="modalSpec"></div>
         <div class="modal-price" id="modalPrice"></div>
+
         <div class="modal-actions">
-          <a class="btn-action btn-a-wa" id="modalWaBtn" href="#" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> Kontaktirajte nas na WhatsAppu</a>
-          <a class="btn-action btn-a-call" href="tel:+385913819412"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> Nazovite: +385 91 381 9412</a>
-          <a class="btn-action btn-a-ig" href="https://www.instagram.com/arbor_vrtovi/" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Pratite nas na Instagramu</a>
+          <a class="btn-action btn-a-wa" id="modalWaBtn" href="#" target="_blank">
+            Kontaktirajte nas na WhatsAppu
+          </a>
+
+          <a class="btn-action btn-a-call" href="tel:+385913819412">
+            Nazovite: +385 91 381 9412
+          </a>
+
+          <a class="btn-action btn-a-ig" href="https://www.instagram.com/arbor_vrtovi/" target="_blank">
+            Pratite nas na Instagramu
+          </a>
         </div>
       </div>
     </div>
+
     <button class="modal-close" onclick="closeModal()">✕</button>
   </div>
 </div>
 
 <footer>
-  <img class="footer-logo" src="slike/9000-389-phoenix-canariensis.svg+xml" alt="Arbor">
-  <div><strong>Arbor</strong> — Vrtni centar &nbsp;·&nbsp; Masline · Palme · Ukrasno bilje</div>
-  <div class="footer-contact">Za narudžbu i dostupnost <a href="tel:+385913819412">kontaktirajte nas</a>.</div>
+  <img class="footer-logo" src="Slike/arbor-logo.svg" alt="Arbor logo">
+
+  <div>
+    <strong>Arbor</strong> — Vrtni centar &nbsp;·&nbsp; Masline · Palme · Ukrasno bilje
+  </div>
+
+  <div class="footer-contact">
+    Za narudžbu i dostupnost <a href="tel:+385913819412">kontaktirajte nas</a>.
+  </div>
+
   <div class="footer-socials">
-    <a class="fsb fsb-wa" href="https://wa.me/385913819412" target="_blank"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp</a>
-    <a class="fsb fsb-ig" href="https://www.instagram.com/arbor_vrtovi/" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> @arbor_vrtovi</a>
-    <a class="fsb fsb-call" href="tel:+385913819412"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg> +385 91 381 9412</a>
+    <a class="fsb fsb-wa" href="https://wa.me/385913819412" target="_blank">WhatsApp</a>
+    <a class="fsb fsb-ig" href="https://www.instagram.com/arbor_vrtovi/" target="_blank">@arbor_vrtovi</a>
+    <a class="fsb fsb-call" href="tel:+385913819412">+385 91 381 9412</a>
   </div>
 </footer>
 
 <script>
 const products = [
-{"id":"9000 346","name":"Trachycarpus","spec":"180 lit","price":900,"cat":"palme","img":"Slike/9000-346-trachycarpus.jpg"},
-{"id":"9000 389","name":"Phoenix Canariensis","spec":"200/220 cm","price":700,"cat":"palme","img":"Slike/9000-389-phoenix-canariensis.jpg"},
-{"id":"9000 387","name":"Butia Capitata","spec":"285 lit","price":1240,"cat":"palme","img":"Slike/9000-387-butia-capitata.jpg"},
-{"id":"9000 408","name":"Washingtonia Robusta","spec":"150 lit","price":744,"cat":"palme","img":"Slike/9000-408-washingtonia-rob-150l.jpg"},
-{"id":"9000 433","name":"Washingtonia Robusta","spec":"200/250 cm","price":820,"cat":"palme","img":"Slike/9000-433-washingtonia-rob-200-250.jpg"},
-{"id":"9000 424","name":"Cyca Revoluta","spec":"15 lit","price":176,"cat":"palme","img":"Slike/9000-424-cyca-revoluta.jpg"},
-{"id":"9000 404","name":"Olea Europaea Plat Bowl","spec":"velika posuda","price":465,"cat":"masline","img":"Slike/9000-404-olea-euro-plat-bowl.jpg"},
-{"id":"9000 405","name":"Olea Europaea Plat Zar","spec":"180 lit","price":775,"cat":"masline","img":"Slike/9000-405-olea-euro-plat-zar-180l.jpg"},
-{"id":"9000 398","name":"Olea Europaea Arbeq","spec":"55 lit","price":202,"cat":"masline","img":"Slike/9000-398-olea-europaea-arbeq.jpg"},
-{"id":"9000 406","name":"Olea Europaea Plat Zar","spec":"375 lit","price":1240,"cat":"masline","img":"Slike/9000-406-olea-euro-plat-zar-375l.jpg"},
-{"id":"9000 414","name":"Olea Europaea Stand","spec":"45 lit","price":186,"cat":"masline","img":"Slike/9000-414-olea-europaea-stand.jpg"},
-{"id":"9000 407","name":"Olea Europaea Plat Zar","spec":"290 lit","price":1085,"cat":"masline","img":"Slike/9000-407-olea-euro-plat-zar-290l.jpg"},
-{"id":"9000 415","name":"Lagerstroemia Indica","spec":"70 lit","price":360,"cat":"ukrasno","img":"Slike/9000-415-lagerstroemia-indica.jpg"},
-{"id":"9000 416","name":"Nerium Oleander R/B","spec":"1 lit","price":32,"cat":"ukrasno","img":"Slike/9000-416-nerium-oleander.jpg"},
-{"id":"9000 421","name":"Yucca Rostrata","spec":"25 lit","price":132,"cat":"ukrasno","img":"Slike/9000-421-yucca-rostrata.jpg"},
-{"id":"9000 422","name":"Euonymus Japonicus A","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-422-euonymus-japonicus-a.jpg"},
-{"id":"9000 426","name":"Callistemon Citrinus","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-426-callistemon-citrinus.jpg"},
-{"id":"9000 423","name":"Euonymus Japonicus Benko","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-423-euonymus-japonicus-benko.jpg"},
-{"id":"9000 430","name":"Bougainvillea Spectabilis","spec":"15 lit","price":55,"cat":"ukrasno","img":"Slike/9000-430-bougainvillea-spectabilis.jpg"},
-{"id":"9000 429","name":"Cupressus Leylandii","spec":"175/200 cm · 18 lit","price":108,"cat":"ukrasno","img":"Slike/9000-429-cupressus-leylandii.jpg"},
-{"id":"9000 425","name":"Dracaena Indivisa Red Star","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-425-dracaena-red-star.jpg"}
+  {"id":"9000 346","name":"Trachycarpus","spec":"180 lit","price":900,"cat":"palme","img":"Slike/9000-346-trachycarpus.jpg"},
+  {"id":"9000 389","name":"Phoenix Canariensis","spec":"200/220 cm","price":700,"cat":"palme","img":"Slike/9000-389-phoenix-canariensis.jpg"},
+  {"id":"9000 387","name":"Butia Capitata","spec":"285 lit","price":1240,"cat":"palme","img":"Slike/9000-387-butia-capitata.jpg"},
+  {"id":"9000 408","name":"Washingtonia Robusta","spec":"150 lit","price":744,"cat":"palme","img":"Slike/9000-408-washingtonia-rob-150l.jpg"},
+  {"id":"9000 433","name":"Washingtonia Robusta","spec":"200/250 cm","price":820,"cat":"palme","img":"Slike/9000-433-washingtonia-rob-200-250.jpg"},
+  {"id":"9000 424","name":"Cyca Revoluta","spec":"15 lit","price":176,"cat":"palme","img":"Slike/9000-424-cyca-revoluta.jpg"},
+  {"id":"9000 404","name":"Olea Europaea Plat Bowl","spec":"velika posuda","price":465,"cat":"masline","img":"Slike/9000-404-olea-euro-plat-bowl.jpg"},
+  {"id":"9000 405","name":"Olea Europaea Plat Zar","spec":"180 lit","price":775,"cat":"masline","img":"Slike/9000-405-olea-euro-plat-zar-180l.jpg"},
+  {"id":"9000 398","name":"Olea Europaea Arbeq","spec":"55 lit","price":202,"cat":"masline","img":"Slike/9000-398-olea-europaea-arbeq.jpg"},
+  {"id":"9000 406","name":"Olea Europaea Plat Zar","spec":"375 lit","price":1240,"cat":"masline","img":"Slike/9000-406-olea-euro-plat-zar-375l.jpg"},
+  {"id":"9000 414","name":"Olea Europaea Stand","spec":"45 lit","price":186,"cat":"masline","img":"Slike/9000-414-olea-europaea-stand.jpg"},
+  {"id":"9000 407","name":"Olea Europaea Plat Zar","spec":"290 lit","price":1085,"cat":"masline","img":"Slike/9000-407-olea-euro-plat-zar-290l.jpg"},
+  {"id":"9000 415","name":"Lagerstroemia Indica","spec":"70 lit","price":360,"cat":"ukrasno","img":"Slike/9000-415-lagerstroemia-indica.jpg"},
+  {"id":"9000 416","name":"Nerium Oleander R/B","spec":"1 lit","price":32,"cat":"ukrasno","img":"Slike/9000-416-nerium-oleander.jpg"},
+  {"id":"9000 421","name":"Yucca Rostrata","spec":"25 lit","price":132,"cat":"ukrasno","img":"Slike/9000-421-yucca-rostrata.jpg"},
+  {"id":"9000 422","name":"Euonymus Japonicus A","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-422-euonymus-japonicus-a.jpg"},
+  {"id":"9000 426","name":"Callistemon Citrinus","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-426-callistemon-citrinus.jpg"},
+  {"id":"9000 423","name":"Euonymus Japonicus Benko","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-423-euonymus-japonicus-benko.jpg"},
+  {"id":"9000 430","name":"Bougainvillea Spectabilis","spec":"15 lit","price":55,"cat":"ukrasno","img":"Slike/9000-430-bougainvillea-spectabilis.jpg"},
+  {"id":"9000 429","name":"Cupressus Leylandii","spec":"175/200 cm · 18 lit","price":108,"cat":"ukrasno","img":"Slike/9000-429-cupressus-leylandii.jpg"},
+  {"id":"9000 425","name":"Dracaena Indivisa Red Star","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-425-dracaena-red-star.jpg"}
 ];
-let activeFilter='sve', searchQuery='', currentProduct=null;
-const catNames={palme:'Palme',masline:'Masline',ukrasno:'Ukrasno bilje'};
 
-function renderGrid(){
-  const grid=document.getElementById('productGrid');
-  const filtered=products.filter(p=>{
-    const catOk=activeFilter==='sve'||p.cat===activeFilter;
-    const q=searchQuery.toLowerCase();
-    const searchOk=!q||p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q)||p.spec.toLowerCase().includes(q);
-    return catOk&&searchOk;
+let activeFilter = 'sve';
+let searchQuery = '';
+let currentProduct = null;
+
+const catNames = {
+  palme: 'Palme',
+  masline: 'Masline',
+  ukrasno: 'Ukrasno bilje'
+};
+
+function renderGrid() {
+  const grid = document.getElementById('productGrid');
+
+  const filtered = products.filter(p => {
+    const catOk = activeFilter === 'sve' || p.cat === activeFilter;
+    const q = searchQuery.toLowerCase();
+
+    const searchOk =
+      !q ||
+      p.name.toLowerCase().includes(q) ||
+      p.id.toLowerCase().includes(q) ||
+      p.spec.toLowerCase().includes(q);
+
+    return catOk && searchOk;
   });
-  document.getElementById('statsCount').innerHTML=`<strong>${filtered.length}</strong> od ${products.length} biljaka`;
-  if(!filtered.length){grid.innerHTML='<div class="empty"><div class="empty-icon">🌱</div><h3>Nema rezultata</h3><p>Pokušaj drukčiji pojam pretrage</p></div>';return;}
-  grid.innerHTML=filtered.map(p=>`
+
+  document.getElementById('statsCount').innerHTML =
+    `<strong>${filtered.length}</strong> od ${products.length} biljaka`;
+
+  if (!filtered.length) {
+    grid.innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">🌱</div>
+        <h3>Nema rezultata</h3>
+        <p>Pokušaj drukčiji pojam pretrage</p>
+      </div>
+    `;
+    return;
+  }
+
+  grid.innerHTML = filtered.map(p => `
     <div class="card" onclick="openModal('${p.id}')">
       <div class="card-img-wrap">
         <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy">
-        <span class="cat-badge">${catNames[p.cat]||p.cat}</span>
+        <span class="cat-badge">${catNames[p.cat] || p.cat}</span>
       </div>
+
       <div class="card-body">
         <div class="card-id">${p.id}</div>
         <div class="card-name">${p.name}</div>
         <div class="card-spec">${p.spec}</div>
+
         <div class="card-footer">
           <div class="card-price">${p.price} <span>€</span></div>
           <button class="btn-inquire">Detalji →</button>
         </div>
       </div>
-    </div>`).join('');
+    </div>
+  `).join('');
 }
 
-function openModal(id){
-  const p=products.find(x=>x.id===id); if(!p)return;
-  currentProduct=p;
-  document.getElementById('modalImg').src=p.img;
-  document.getElementById('modalId').textContent=p.id;
-  document.getElementById('modalName').textContent=p.name;
-  document.getElementById('modalSpec').textContent=p.spec;
-  document.getElementById('modalPrice').innerHTML=`${p.price} <small>€</small>`;
-  const msg=encodeURIComponent(`Pozdrav! Zanima me biljka: ${p.id} — ${p.name} (${p.spec}) — ${p.price} €`);
-  document.getElementById('modalWaBtn').href=`https://wa.me/385913819412?text=${msg}`;
+function openModal(id) {
+  const p = products.find(x => x.id === id);
+  if (!p) return;
+
+  currentProduct = p;
+
+  document.getElementById('modalImg').src = p.img;
+  document.getElementById('modalImg').alt = p.name;
+  document.getElementById('modalId').textContent = p.id;
+  document.getElementById('modalName').textContent = p.name;
+  document.getElementById('modalSpec').textContent = p.spec;
+  document.getElementById('modalPrice').innerHTML = `${p.price} <small>€</small>`;
+
+  const msg = encodeURIComponent(
+    `Pozdrav! Zanima me biljka: ${p.id} — ${p.name} (${p.spec}) — ${p.price} €`
+  );
+
+  document.getElementById('modalWaBtn').href =
+    `https://wa.me/385913819412?text=${msg}`;
+
   document.getElementById('modalOverlay').classList.add('open');
-  document.body.style.overflow='hidden';
+  document.body.style.overflow = 'hidden';
 }
 
-function closeModal(){
+function closeModal() {
   document.getElementById('modalOverlay').classList.remove('open');
-  document.body.style.overflow='';
+  document.body.style.overflow = '';
 }
 
-document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
-document.querySelectorAll('.filter-btn').forEach(btn=>{
-  btn.addEventListener('click',function(){
-    document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-    this.classList.add('active'); activeFilter=this.dataset.cat; renderGrid();
+document.getElementById('modalOverlay').addEventListener('click', function(e) {
+  if (e.target === this) closeModal();
+});
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+
+    this.classList.add('active');
+    activeFilter = this.dataset.cat;
+
+    renderGrid();
   });
 });
-document.getElementById('searchInput').addEventListener('input',function(){searchQuery=this.value;renderGrid();});
+
+document.getElementById('searchInput').addEventListener('input', function() {
+  searchQuery = this.value;
+  renderGrid();
+});
+
 renderGrid();
 </script>
+
 </body>
 </html>
