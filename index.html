@@ -115,9 +115,43 @@
   .btn-a-ig { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; }
   .btn-a-ig:hover { opacity:0.88; }
 
-  footer { background:var(--green-dark); color:rgba(255,255,255,0.65); padding:32px 24px; text-align:center; font-size:14px; line-height:2; }
+  /* ── Footer ── */
+  footer {
+    background:var(--green-dark);
+    color:rgba(255,255,255,0.65);
+    padding:36px 24px 28px;
+    text-align:center;
+    font-size:14px;
+    line-height:2;
+  }
   footer strong { color:#fff; }
-  .footer-logo { height:68px; width:auto; margin-bottom:14px; }
+  .footer-logo { height:68px; width:auto; margin-bottom:18px; }
+
+  /* Mapa */
+  .footer-map-section {
+    margin: 0 auto 24px;
+    max-width: 600px;
+    width: 100%;
+  }
+  .footer-map-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 10px;
+  }
+  .footer-map-section iframe {
+    width: 100%;
+    height: 200px;
+    border: none;
+    border-radius: 12px;
+    opacity: 0.85;
+    transition: opacity 0.2s;
+    display: block;
+  }
+  .footer-map-section iframe:hover { opacity: 1; }
+
   .footer-contact { margin:8px 0 14px; font-size:15px; color:rgba(255,255,255,0.85); }
   .footer-contact a { color:#fff; font-weight:700; text-decoration:none; border-bottom:1px solid rgba(255,255,255,0.4); padding-bottom:1px; transition:border-color 0.18s; }
   .footer-contact a:hover { border-color:#fff; }
@@ -137,6 +171,7 @@
     .grid { grid-template-columns:repeat(auto-fill,minmax(155px,1fr)); gap:13px; }
     .card-name { font-size:13px; }
     .card-price { font-size:17px; }
+    .footer-map-section iframe { height:170px; }
   }
 </style>
 </head>
@@ -199,6 +234,18 @@
 
 <footer>
   <img class="footer-logo" src="Slike/arbor-logo.svg" alt="Arbor">
+
+  <!-- MAPA -->
+  <div class="footer-map-section">
+    <div class="footer-map-label">📍 Kako do nas?</div>
+    <iframe
+      src="https://maps.app.goo.gl/GZYNm8rHRziv4HmE9"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+
   <div><strong>Arbor</strong> — Vrtni centar &nbsp;·&nbsp; Masline · Palme · Ukrasno bilje</div>
   <div class="footer-contact">Za narudžbu i dostupnost <a href="tel:+385913819412">kontaktirajte nas</a>.</div>
   <div class="footer-socials">
@@ -234,8 +281,8 @@ const products = [
   {"id":"9000 420","name":"Teucrium Fruticans","spec":"10 lit","price":34,"cat":"ukrasno","img":"Slike/9000-420-TEUCRIUM-FRUTICANS-10.jpeg"},
   {"id":"9000 431","name":"Citrus Limon","spec":"20/25 CO","price":480,"cat":"ukrasno","img":"Slike/9000-431-CITRUS-LIMON-20-25-CO.jpeg"},
   {"id":"9000 336","name":"Olea Europ. Pata","spec":"500 lit","price":980,"cat":"masline","img":"Slike/9000-336-olea-europ-pata-500l.jpeg"}
-
 ];
+
 let activeFilter='sve', searchQuery='', currentProduct=null;
 const catNames={palme:'Palme',masline:'Masline',ukrasno:'Ukrasno bilje'};
 
