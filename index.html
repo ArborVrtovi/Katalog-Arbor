@@ -48,6 +48,10 @@
   .btn-wa:hover { background:#1ebe5d; transform:translateY(-1px); }
   .btn-call { background:rgba(255,255,255,0.15); color:#fff; border:1.5px solid rgba(255,255,255,0.3); }
   .btn-call:hover { background:rgba(255,255,255,0.25); transform:translateY(-1px); }
+  .btn-lokacija { background:rgba(220,50,50,0.2); color:#fff; border:1.5px solid rgba(220,80,80,0.45); }
+  .btn-lokacija:hover { background:rgba(220,50,50,0.38); transform:translateY(-1px); }
+  .btn-lokacija { background:#e53935; color:#fff; border:none; }
+  .btn-lokacija:hover { background:#c62828; transform:translateY(-1px); }
 
   .filters { background:var(--surface); border-bottom:1px solid var(--border); position:sticky; top:84px; z-index:90; }
   .filters-inner { max-width:1200px; margin:0 auto; padding:11px 24px; display:flex; gap:9px; align-items:center; flex-wrap:wrap; }
@@ -240,6 +244,9 @@
         <a class="social-btn btn-call" href="tel:+385913819412">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg><span>Pozovi</span>
         </a>
+        <a class="social-btn btn-lokacija" href="#footer-mapa" onclick="scrollToMap(event)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg><span>Lokacija</span>
+        </a>
       </div>
     </div>
   </div>
@@ -257,7 +264,7 @@
 
 <div class="stats-bar">
   <select class="sort-select" id="sortSelect">
-    <option value="default">Sortiraj</option>
+    <option value="default">Zadano</option>
     <option value="price-asc">Cijena: niža → viša</option>
     <option value="price-desc">Cijena: viša → niža</option>
   </select>
@@ -302,7 +309,7 @@
   <img class="footer-logo" src="Slike/arbor-logo.svg" alt="Arbor">
 
   <!-- MAPA -->
-  <div class="footer-map-section">
+  <div class="footer-map-section" id="footer-mapa">
     <div class="footer-map-label">📍 Kako do nas? - Adresa: Put Vrela bb, Zadar</div>
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1320!2d15.2550423!3d44.1556893!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4761f1002896a229:0x3d6c9a9c26778f41!2sArbor+-+proizvodnja%2C+prodaja+i+najam+ukrasnog+bilja!5e0!3m2!1shr!2shr!4v1700000000000!5m2!1shr!2shr"
@@ -349,6 +356,11 @@ const products = [
   {"id":"9000 336","name":"Olea Europ. Pata","spec":"500 lit","price":980,"cat":"masline","img":"Slike/9000-336-olea-europ-pata-500l.jpeg"},
   {"id":"9000 336","name":"Ficus Carica","spec":"90 lit","price":380,"cat":"ukrasno","img":"Slike/9000-350-ficus-carica-90l.jpeg"}
 ];
+
+function scrollToMap(e){
+  e.preventDefault();
+  document.getElementById('footer-mapa').scrollIntoView({behavior:'smooth', block:'center'});
+}
 
 let activeFilter='sve', searchQuery='', sortOrder='default', currentProduct=null;
 const catNames={palme:'Palme',masline:'Masline',ukrasno:'Ukrasno bilje'};
