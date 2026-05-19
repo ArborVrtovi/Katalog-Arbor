@@ -60,6 +60,16 @@
   .filter-btn:hover { border-color:var(--green-mid); color:var(--green-mid); }
   .filter-btn.active { background:var(--green-dark); border-color:var(--green-dark); color:#fff; }
 
+  .sort-wrap { margin-left:auto; }
+  .sort-select {
+    padding:6px 32px 6px 14px; border-radius:50px; border:1.5px solid var(--border);
+    background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='%237a8c74'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E") no-repeat right 10px center;
+    color:var(--muted); font-family:'DM Sans',sans-serif; font-size:13px; font-weight:500;
+    cursor:pointer; appearance:none; outline:none; transition:all 0.18s;
+  }
+  .sort-select:hover { border-color:var(--green-mid); color:var(--green-mid); }
+  .sort-select:focus { border-color:var(--green-dark); color:var(--green-dark); }
+
   .stats-bar { max-width:1200px; margin:24px auto 0; padding:0 24px; }
   .stats-count { font-size:13px; color:var(--muted); }
   .stats-count strong { color:var(--green-dark); font-weight:600; }
@@ -244,6 +254,13 @@
     <button class="filter-btn" data-cat="palme">🌴 Palme</button>
     <button class="filter-btn" data-cat="masline">🫒 Masline</button>
     <button class="filter-btn" data-cat="ukrasno">🌺 Ukrasno bilje</button>
+    <div class="sort-wrap">
+      <select class="sort-select" id="sortSelect">
+        <option value="default">Zadano</option>
+        <option value="price-asc">Cijena: niža → viša</option>
+        <option value="price-desc">Cijena: viša → niža</option>
+      </select>
+    </div>
   </div>
 </div>
 
@@ -335,17 +352,19 @@ const products = [
   {"id":"9000 336","name":"Ficus Carica","spec":"90 lit","price":380,"cat":"ukrasno","img":"Slike/9000-350-ficus-carica-90l.jpeg"}
 ];
 
-let activeFilter='sve', searchQuery='', currentProduct=null;
+let activeFilter='sve', searchQuery='', sortOrder='default', currentProduct=null;
 const catNames={palme:'Palme',masline:'Masline',ukrasno:'Ukrasno bilje'};
 
 function renderGrid(){
   const grid=document.getElementById('productGrid');
-  const filtered=products.filter(p=>{
+  let filtered=products.filter(p=>{
     const catOk=activeFilter==='sve'||p.cat===activeFilter;
     const q=searchQuery.toLowerCase();
     const searchOk=!q||p.name.toLowerCase().includes(q)||p.id.toLowerCase().includes(q)||p.spec.toLowerCase().includes(q);
     return catOk&&searchOk;
   });
+  if(sortOrder==='price-asc') filtered.sort((a,b)=>a.price-b.price);
+  else if(sortOrder==='price-desc') filtered.sort((a,b)=>b.price-a.price);
   document.getElementById('statsCount').innerHTML=`<strong>${filtered.length}</strong> od ${products.length} biljaka`;
   if(!filtered.length){grid.innerHTML='<div class="empty"><div class="empty-icon">🌱</div><h3>Nema rezultata</h3><p>Pokušaj drukčiji pojam pretrage</p></div>';return;}
   grid.innerHTML=filtered.map(p=>`
@@ -404,6 +423,7 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
   });
 });
 document.getElementById('searchInput').addEventListener('input',function(){searchQuery=this.value;renderGrid();});
+document.getElementById('sortSelect').addEventListener('change',function(){sortOrder=this.value;renderGrid();});
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){ closeLightbox(); closeModal(); }
 });
