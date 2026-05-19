@@ -90,7 +90,21 @@
   .modal-overlay.open { display:flex; }
   .modal { background:var(--surface); border-radius:22px; max-width:540px; width:100%; overflow:hidden; box-shadow:0 24px 80px rgba(42,50,38,0.28); animation:modalIn 0.24s ease; }
   @keyframes modalIn { from{opacity:0;transform:scale(0.94) translateY(10px)} to{opacity:1;transform:scale(1) translateY(0)} }
-  .modal-img { width:100%; max-height:300px; object-fit:cover; }
+
+  .modal-img-wrap { position: relative; overflow: hidden; }
+  .modal-img {
+    width:100%; max-height:300px; object-fit:cover; display:block;
+    cursor: zoom-in; transition: opacity 0.2s;
+  }
+  .modal-img:hover { opacity: 0.9; }
+  .modal-img-hint {
+    position: absolute; bottom: 10px; right: 12px;
+    background: rgba(0,0,0,0.45); color: #fff;
+    font-size: 11px; font-weight: 500; padding: 4px 10px;
+    border-radius: 50px; pointer-events: none;
+    display: flex; align-items: center; gap: 5px;
+    backdrop-filter: blur(4px);
+  }
 
   @media(min-width: 641px) {
     .modal { max-width: 700px; }
@@ -114,6 +128,30 @@
   .btn-a-call:hover { background:var(--green-mid); }
   .btn-a-ig { background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); color:#fff; }
   .btn-a-ig:hover { opacity:0.88; }
+
+  /* ── Lightbox ── */
+  .lightbox-overlay {
+    display: none; position: fixed; inset: 0; z-index: 300;
+    background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+    cursor: zoom-out; backdrop-filter: blur(4px);
+    animation: none;
+  }
+  .lightbox-overlay.open { display: flex; animation: lbIn 0.22s ease; }
+  @keyframes lbIn { from{opacity:0} to{opacity:1} }
+  .lightbox-overlay img {
+    max-width: 95vw; max-height: 95vh; object-fit: contain;
+    border-radius: 8px; box-shadow: 0 8px 60px rgba(0,0,0,0.6);
+    animation: modalIn 0.22s ease;
+    cursor: default;
+  }
+  .lightbox-close {
+    position: fixed; top: 16px; right: 18px;
+    background: rgba(255,255,255,0.15); border: none; color: #fff;
+    width: 40px; height: 40px; border-radius: 50%; font-size: 20px;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    transition: background 0.15s; z-index: 301;
+  }
+  .lightbox-close:hover { background: rgba(255,255,255,0.3); }
 
   /* ── Footer ── */
   footer {
@@ -212,10 +250,17 @@
 <div class="stats-bar"><div class="stats-count" id="statsCount"></div></div>
 <div class="grid" id="productGrid"></div>
 
+<!-- Modal -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-wrap">
     <div class="modal">
-      <img class="modal-img" id="modalImg" src="" alt="">
+      <div class="modal-img-wrap">
+        <img class="modal-img" id="modalImg" src="" alt="">
+        <div class="modal-img-hint">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+          Klikni za punu rezoluciju
+        </div>
+      </div>
       <div class="modal-body">
         <div class="modal-id" id="modalId"></div>
         <div class="modal-name" id="modalName"></div>
@@ -230,6 +275,12 @@
     </div>
     <button class="modal-close" onclick="closeModal()">✕</button>
   </div>
+</div>
+
+<!-- Lightbox -->
+<div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img id="lightboxImg" src="" alt="" onclick="event.stopPropagation()">
 </div>
 
 <footer>
@@ -282,7 +333,6 @@ const products = [
   {"id":"9000 431","name":"Citrus Limon","spec":"20/25 CO","price":480,"cat":"ukrasno","img":"Slike/9000-431-CITRUS-LIMON-20-25-CO.jpeg"},
   {"id":"9000 336","name":"Olea Europ. Pata","spec":"500 lit","price":980,"cat":"masline","img":"Slike/9000-336-olea-europ-pata-500l.jpeg"},
   {"id":"9000 336","name":"Ficus Carica","spec":"90 lit","price":380,"cat":"ukrasno","img":"Slike/9000-350-ficus-carica-90l.jpeg"}
-
 ];
 
 let activeFilter='sve', searchQuery='', currentProduct=null;
@@ -299,7 +349,7 @@ function renderGrid(){
   document.getElementById('statsCount').innerHTML=`<strong>${filtered.length}</strong> od ${products.length} biljaka`;
   if(!filtered.length){grid.innerHTML='<div class="empty"><div class="empty-icon">🌱</div><h3>Nema rezultata</h3><p>Pokušaj drukčiji pojam pretrage</p></div>';return;}
   grid.innerHTML=filtered.map(p=>`
-    <div class="card" onclick="openModal('${p.id}')">
+    <div class="card" onclick="openModal('${p.id}','${p.img}')">
       <div class="card-img-wrap">
         <img class="card-img" src="${p.img}" alt="${p.name}" loading="lazy">
         <span class="cat-badge">${catNames[p.cat]||p.cat}</span>
@@ -316,10 +366,12 @@ function renderGrid(){
     </div>`).join('');
 }
 
-function openModal(id){
-  const p=products.find(x=>x.id===id); if(!p)return;
+function openModal(id, img){
+  const p=products.find(x=>x.id===id&&x.img===img); if(!p)return;
   currentProduct=p;
-  document.getElementById('modalImg').src=p.img;
+  const modalImg = document.getElementById('modalImg');
+  modalImg.src=p.img;
+  modalImg.onclick=()=>openLightbox(p.img);
   document.getElementById('modalId').textContent=p.id;
   document.getElementById('modalName').textContent=p.name;
   document.getElementById('modalSpec').textContent=p.spec;
@@ -335,6 +387,15 @@ function closeModal(){
   document.body.style.overflow='';
 }
 
+function openLightbox(src){
+  document.getElementById('lightboxImg').src=src;
+  document.getElementById('lightboxOverlay').classList.add('open');
+}
+
+function closeLightbox(){
+  document.getElementById('lightboxOverlay').classList.remove('open');
+}
+
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal();});
 document.querySelectorAll('.filter-btn').forEach(btn=>{
   btn.addEventListener('click',function(){
@@ -343,6 +404,10 @@ document.querySelectorAll('.filter-btn').forEach(btn=>{
   });
 });
 document.getElementById('searchInput').addEventListener('input',function(){searchQuery=this.value;renderGrid();});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){ closeLightbox(); closeModal(); }
+});
+
 renderGrid();
 </script>
 </body>
